@@ -1,0 +1,54 @@
+*::before,
+*::after,
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #eee;
+}
+
+.title {
+  text-align: center;
+  margin-top: 2rem;
+}
+.container {
+  margin: 2rem auto;
+  border: black solid 1px;
+  width: 50rem;
+  height: 50rem;
+  display: grid;
+}
+.btn-wrapper {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.btn {
+  margin-left: 1rem;
+  border: none;
+  color: #fff;
+  padding: 1.5rem;
+  border-radius: 5rem;
+  outline: none;
+  cursor: pointer;
+}
+.btn:active {
+  transform: translateY(0.4rem);
+  box-shadow: 0 0.3rem 0.6rem #000;
+}
+
+.reset {
+  background-color: rebeccapurple;
+}
+.color {
+  background-color: black;
+}
