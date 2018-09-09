@@ -1,11 +1,17 @@
 // Global variables:
-
 const container = document.querySelector(".container");
 const resetBtn = document.querySelector(".reset");
 const colorBtn = document.querySelector(".color");
+const eraseBtn = document.querySelector(".erase");
+// This global variable will keep track on the color of the sketch
 let color;
 
-// changeColor
+/**
+ * Using an IIFE to create a closure.
+ * Index is initally set to 0, local variable colors is an array of possible colors for sketch
+ * Everytime user clicks colorBtn, index will increment and both sketch and colorBtn will change colors
+ * After final iteration, index is set back to 0 (black)
+ */
 let changeColor = (function() {
   let index = 0;
   const colors = [
@@ -15,23 +21,17 @@ let changeColor = (function() {
     "blue",
     "orange",
     "purple",
-    "yellow"
+    "yellow",
+    "grey"
   ];
   return function() {
     if (index >= colors.length) {
       index = 0;
     }
-    console.log(index);
-    color = colors[index];
-    colorBtn.style.backgroundColor = colors[index];
+    setColor(colors[index]);
     index++;
   };
 })();
-
-function setColor(color) {
-  color = color;
-  colorBtn.style.backgroundColor = color;
-}
 
 changeColor();
 
@@ -44,6 +44,8 @@ container.addEventListener("mouseover", sketch);
 
 colorBtn.addEventListener("click", changeColor);
 
+eraseBtn.addEventListener("click", erase);
+
 // Helper functions
 function sketch(e) {
   if (e.target.className === "cell") {
@@ -54,7 +56,13 @@ function sketch(e) {
 function askForNumGrids() {
   const gridSize = prompt("How many grids per column and row?");
   resetContainer();
-  makeGridsAppear(parseInt(gridSize));
+  // Need to check if gridSize is also greater than 0 other program acts weird using negative numbers
+  if (gridSize && gridSize > 0) {
+    makeGridsAppear(parseInt(gridSize));
+  } else {
+    // edge case needed in case user does not enter a valid number
+    makeGridsAppear(16);
+  }
 }
 
 function makeGridsAppear(numGrids) {
@@ -69,9 +77,19 @@ function makeGridsAppear(numGrids) {
   }
 }
 
+function setColor(changedColor) {
+  color = changedColor;
+  colorBtn.style.backgroundColor = changedColor;
+}
+
 // Need to remove children from grid since otherwise the border will stack from the previous call of makeGridsAppear
 function resetContainer() {
   while (container.firstChild) {
     container.removeChild(container.firstChild);
   }
+}
+
+// This will mutate the global color variable to be the same as the background color
+function erase() {
+  color = "#eee";
 }

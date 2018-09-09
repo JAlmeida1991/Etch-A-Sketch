@@ -1,10 +1,12 @@
+$resetBtn: #9055a2;
+$eraseBtn: #95a5a6;
+
 *::before,
 *::after,
 * {
   margin: 0;
   padding: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html {
@@ -20,24 +22,17 @@ body {
   text-align: center;
   margin-top: 2rem;
 }
-
 .container {
   margin: 2rem auto;
   border: #000 solid 1px;
   width: 50rem;
   height: 50rem;
-  display: -ms-grid;
   display: grid;
 }
-
 .btn-wrapper {
   margin-top: 2rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
 }
 
 .btn {
@@ -48,25 +43,20 @@ body {
   border-radius: 1rem;
   outline: none;
   cursor: pointer;
-  -webkit-transition: all 0.5s;
   transition: all 0.5s;
   font-weight: bolder;
 }
-
 .btn:active {
-  -webkit-transform: translateY(0.1rem);
-          transform: translateY(0.1rem);
-  -webkit-box-shadow: 0 0.1rem 0.1rem #000;
-          box-shadow: 0 0.1rem 0.1rem #000;
+  transform: translateY(0.1rem);
+  box-shadow: 0 0.1rem 0.1rem #000;
 }
 
 .reset {
-  background-color: #9055a2;
+  background-color: $resetBtn;
   color: #011638;
 }
-
 .erase {
-  background-color: #95a5a6;
+  background-color: $eraseBtn;
   color: #000;
 }
 
@@ -83,4 +73,3 @@ body {
     height: 35rem;
   }
 }
-/*# sourceMappingURL=style.css.map */
