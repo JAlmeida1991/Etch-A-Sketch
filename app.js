@@ -8,11 +8,12 @@ let color;
 
 /**
  * Using an IIFE to create a closure.
- * Index is initally set to 0, local variable colors is an array of possible colors for sketch
+ * Index is initally set to 0, local variable, colors, is an array of possible colors for sketch
  * Everytime user clicks colorBtn, index will increment and both sketch and colorBtn will change colors
  * After final iteration, index is set back to 0 (black)
+ * Since this is a function expression, it must be declared at the top since JS Engine will not hoist unlike function statements
  */
-let changeColor = (function() {
+const changeColor = (() => {
   let index = 0;
   const colors = [
     "black",
@@ -24,7 +25,7 @@ let changeColor = (function() {
     "yellow",
     "grey"
   ];
-  return function() {
+  return () => {
     if (index >= colors.length) {
       index = 0;
     }
@@ -33,14 +34,13 @@ let changeColor = (function() {
   };
 })();
 
-changeColor();
-
-makeGridsAppear(16);
 // Event handlers:
 
-resetBtn.addEventListener("click", askForNumGrids);
+window.addEventListener("load", init);
 
 container.addEventListener("mouseover", sketch);
+
+resetBtn.addEventListener("click", askForNumGrids);
 
 colorBtn.addEventListener("click", changeColor);
 
@@ -77,6 +77,7 @@ function makeGridsAppear(numGrids) {
   }
 }
 
+// This will change the color of the button and sketch
 function setColor(changedColor) {
   color = changedColor;
   colorBtn.style.backgroundColor = changedColor;
@@ -92,4 +93,9 @@ function resetContainer() {
 // This will mutate the global color variable to be the same as the background color
 function erase() {
   color = "#eee";
+}
+
+function init() {
+  changeColor();
+  makeGridsAppear(16);
 }
