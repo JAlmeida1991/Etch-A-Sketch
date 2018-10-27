@@ -1,4 +1,5 @@
 (function() {
+  "use strict";
   // Global variables:
   const container = document.querySelector(".container");
   const resetBtn = document.querySelector(".reset");
