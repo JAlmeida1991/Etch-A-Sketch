@@ -1,0 +1,32 @@
+.btn {
+  margin-left: 1rem;
+  border: none;
+  color: #fff;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: bolder;
+  box-shadow: 0 0.3rem 0.2rem #333;
+
+  &-wrapper {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  &:active {
+    transform: translateY(0.1rem);
+    box-shadow: none;
+  }
+}
+
+.reset {
+  background-color: $resetBtn;
+  color: #011638;
+}
+.erase {
+  background-color: $eraseBtn;
+  color: #000;
+}

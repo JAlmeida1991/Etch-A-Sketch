@@ -1,0 +1,17 @@
+{
+  "name": "etch-a-sketch",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/JAlmeida1991/Etch-A-Sketch.git",
+  "author": "Jonathan Almeida <jalmeida0291@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^9.4.2",
+    "node-sass": "^4.11.0",
+    "parcel-bundler": "^1.10.3"
+  },
+  "scripts": {
+    "start": "parcel ./src/index.html",
+    "build": "parcel build ./src/index.html"
+  }
+}
